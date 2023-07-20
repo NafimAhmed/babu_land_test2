@@ -51,109 +51,199 @@ class _HomeState extends State<Home> {
     return Scaffold(
 
       appBar: AppBar(
-        title: Text("Tickets"),
-        //backgroundColor: Color.fromARGB(1, 255, 140, 26),
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(Icons.arrow_back,color: Colors.white,),
+            SizedBox(width: 26.w,),
+            Text("Tickets",style: GoogleFonts.inter(
+
+              color: Colors.white,
+              fontWeight: FontWeight.w400,
+              fontSize: 24.sp
+            ),),
+          ],
+        ),
+        backgroundColor: Color.fromARGB(255, 255, 140, 26),
 
 
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+      body: SingleChildScrollView(
+        child: Container(
+
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
 
 
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: apiMap!['items'].length,
-              itemBuilder:(BuildContext context, int index){
+              ListView.builder(
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                itemCount: apiMap!['items'].length,
+                  itemBuilder:(BuildContext context, int index){
 
-            return Container(
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                  child: Container(
 
-              child: Column(
-                children: [
-                  Text("This is your Entry Ticket",
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700
-                  ),
-                  ),
+                    padding: EdgeInsets.all(10),
 
-                  Text("Order ID: ${apiMap!['items'][index]['pk']}",
-                    style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400
-                    ),
-                  ),
-
-                  Text("Ticket Price: ${apiMap!['items'][index]['total']}",
-                    style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400
-                    ),
-                  ),
-
-
-                  Text(" Purchase Date  ${apiMap!['items'][index]['sell_date']}",
-                    style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400
-                    ),
-                  ),
-
-
-                  Padding(
-                    padding: const EdgeInsets.only(left: 0),
-                    child: Container(
-                      height: 35.sp,width:30.w ,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4.0),
-                          color: Color.fromARGB(255, 255, 140, 43)
-                      ),
-                      child: TextButton(
-                        style: ButtonStyle(
-                          shadowColor: MaterialStateProperty.all(Colors.transparent),
-                          overlayColor: MaterialStateProperty.all(Colors.transparent),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide(
+                          color: Color.fromARGB(255, 254, 151, 56),
+                          width: 2.0,
                         ),
-                        onPressed: (){
-
-
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      Page2(
-                                        orderID: "${apiMap!['items'][index]['pk']}",
-                                        parchaseDate: "${apiMap!['items'][index]['sell_date']}",
-                                        price: "${apiMap!['items'][index]['total']}",
-                                      )
-                              )
-                          );
-
-
-
-
-
-
-
-                        },
-                        child: Text('Active',
-                          style: TextStyle(
-                              fontSize: 20,color: Colors.white),),
-                      ),
+                        right:  BorderSide(
+                          color: Color.fromARGB(255, 0, 174, 239),
+                          width: 2.0,
+                        ),
+                        top:  BorderSide(
+                          color: Color.fromARGB(255, 77, 184, 77),
+                          width: 2.0,
+                        ),
+                        bottom:  BorderSide(
+                          color: Color.fromARGB(255, 255, 0, 0),
+                          width: 2.0,
+                        ),
+                      )
                     ),
+
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+
+                            Image.asset("assets/Group16.png",
+                            width: 16.w,
+                            ),
+
+
+
+                            Column(
+                              children: [
+
+
+                                Text("This is your Entry Ticket",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700
+                                ),
+                                ),
+
+                                SizedBox(height: 5,),
+
+                                Text("Order ID: ${apiMap!['items'][index]['pk']}",
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400
+                                  ),
+                                ),
+
+                                SizedBox(height: 5,),
+
+                                Text("Ticket Price: ${apiMap!['items'][index]['total']}",
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400
+                                  ),
+                                ),
+
+
+
+                              ],
+                            ),
+
+
+                            Image.asset("assets/qr2.png",
+                              width: 16.w,
+                            ),
+
+
+
+                          ],
+                        ),
+
+
+
+
+
+
+                        SizedBox(height: 5,),
+
+
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0),
+                          child: Container(
+                            height: 35.sp,width:30.w ,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4.0),
+                                color: Color.fromARGB(255, 255, 140, 43)
+                            ),
+                            child: TextButton(
+                              style: ButtonStyle(
+                                shadowColor: MaterialStateProperty.all(Colors.transparent),
+                                overlayColor: MaterialStateProperty.all(Colors.transparent),
+                              ),
+                              onPressed: (){
+
+
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Page2(
+                                              orderID: "${apiMap!['items'][index]['pk']}",
+                                              parchaseDate: "${apiMap!['items'][index]['sell_date']}",
+                                              price: "${apiMap!['items'][index]['total']}",
+                                            )
+                                    )
+                                );
+
+
+
+
+
+
+
+                              },
+                              child: Text('Active',
+                                style: TextStyle(
+                                    fontSize: 20,color: Colors.white),),
+                            ),
+                          ),
+                        ),
+
+
+                        SizedBox(height: 25,),
+
+                        Row(
+                          children: [
+                            Text(" Purchase Date  ${apiMap!['items'][index]['sell_date']}",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400
+                              ),
+                            ),
+                          ],
+                        ),
+
+
+
+
+
+                      ],
+                    ),
+
                   ),
+                );
 
-
-
-
-                ],
+              }
               ),
 
-            );
-
-          }
+            ],
           ),
-
-        ],
+        ),
       ),
     );
   }
