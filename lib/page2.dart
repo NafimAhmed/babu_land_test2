@@ -62,50 +62,56 @@ class _Page2State extends State<Page2> {
         ),
 
       ),
-      body: Column(
-        children: [
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
 
 
-          Container(
-            height: 60.h,
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: apiMap!['items'].length,
-                itemBuilder:(BuildContext context, int index){
+            Container(
+              height: 60.h,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: apiMap!['items'].length,
+                  itemBuilder:(BuildContext context, int index){
 
-                  return Container(
+                    return Container(
 
-                    child: Column(
-                      children: [
-                        Text("${apiMap!['items'][index]['dsc']} Ticket",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.orangeAccent.shade100
+                      ),
+
+                      child: Column(
+                        children: [
+                          Text("${apiMap!['items'][index]['dsc']} Ticket",
+                            style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700
+                            ),
                           ),
-                        ),
 
 
-                        Text("SL NO : ${apiMap!['items'][index]['pk']}",
-                          style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400
+                          Text("SL NO : ${apiMap!['items'][index]['pk']}",
+                            style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400
+                            ),
                           ),
-                        ),
 
-                        Text("Quantity : ${apiMap!['items'][index]['qty']}",
-                          style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400
+                          Text("Quantity : ${apiMap!['items'][index]['qty']}",
+                            style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400
+                            ),
                           ),
-                        ),
 
 
-                        Text("Price : ${apiMap!['items'][index]['iteminfo_fk']}",
-                          style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400
+                          Text("Price : ${apiMap!['items'][index]['iteminfo_fk']}",
+                            style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400
+                            ),
                           ),
-                        ),
 
 
 
@@ -114,74 +120,101 @@ class _Page2State extends State<Page2> {
 
 
 
-                      ],
+                        ],
+                      ),
+
+                    );
+
+                  }
+              ),
+            ),
+
+
+
+            Container(
+              //alignment: Alignment.bottomCenter,
+              padding: EdgeInsets.all(20),
+
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("Scan QR code to avail ticket",
+
+                    style: GoogleFonts.openSans(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.sp
                     ),
 
-                  );
-
-                }
-            ),
-          ),
-
-
-
-          Container(
-            //alignment: Alignment.bottomCenter,
-
-            child: Column(
-              children: [
-                Text("Scan QR code to avail ticket",
-
-                  style: GoogleFonts.openSans(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.sp
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
 
-                ),
-                Row(
-                  children: [
-                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
 
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                          Text("Order Id: ",
 
-                        Text("Order Id: "),
+                            style: GoogleFonts.openSans(
+                              color: Colors.grey.shade600
+                            ),
 
-                        Text("${widget.orderID}"),
+                          ),
 
-                        Text("Ticket Parchase Date: "),
+                          Text("${widget.orderID}"),
 
-                        Text("${widget.parchaseDate}"),
-                        Text("Ticket Expire Date: "),
+                          Text("Ticket Parchase Date: ",
 
-                        Text("None"),
-
-                        Text("Ticket Price: "),
-
-                        Text("${widget.price}"),
-
-                      ],
-                    ),
+                            style: GoogleFonts.openSans(
+                                color: Colors.grey.shade600
+                            ),
 
 
+                          ),
 
-                    QrImageView(
-                      data: '${widget.orderID}',
-                      version: QrVersions.auto,
-                      size: 35.w,
-                    ),
+                          Text("${widget.parchaseDate}"),
+                          Text("Ticket Expire Date: ",
+                            style: GoogleFonts.openSans(
+                                color: Colors.grey.shade600
+                            ),
+
+                          ),
+
+                          Text("None"),
+
+                          Text("Ticket Price: ",
+                            style: GoogleFonts.openSans(
+                                color: Colors.grey.shade600
+                            ),
+
+                          ),
+
+                          Text("${widget.price}"),
+
+                        ],
+                      ),
 
 
 
-                  ],
-                ),
-              ],
-            ),
-          )
+                      QrImageView(
+                        data: '${widget.orderID}',
+                        version: QrVersions.auto,
+                        size: 35.w,
+                      ),
 
 
 
-        ],
+                    ],
+                  ),
+                ],
+              ),
+            )
+
+
+
+          ],
+        ),
       ),
     );
   }
