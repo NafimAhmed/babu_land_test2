@@ -70,8 +70,21 @@ class _Page2State extends State<Page2> {
 
             Container(
               decoration: BoxDecoration(
-                color: Colors.red.shade100
-              ),
+                gradient: LinearGradient(
+
+
+            colors: [
+            Colors.white,
+              Colors.red.shade100
+          ],
+          begin: const FractionalOffset(0.0, 0.0),
+        end: const FractionalOffset(0.0, 1.0),
+        stops: [0.0, 1.0],
+        tileMode: TileMode.clamp),
+
+
+
+                ),
               height: 60.h,
               child: ListView.builder(
                   shrinkWrap: true,
@@ -215,11 +228,19 @@ class _Page2State extends State<Page2> {
                                           ),
                                         ),
 
+                                        SizedBox(height: 10,),
 
-                                        Text("Price : ${apiMap!['items'][index]['iteminfo_fk']}",
-                                          style: GoogleFonts.poppins(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w400
+                                        Container(
+                                         padding: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(30),
+                                            color: Colors.green
+                                          ),
+                                          child: Text("Price : ${apiMap!['items'][index]['iteminfo_fk']}",
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400
+                                            ),
                                           ),
                                         ),
 
@@ -265,11 +286,23 @@ class _Page2State extends State<Page2> {
 
             Container(
               //alignment: Alignment.bottomCenter,
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
 
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+
+
+                  Container(
+                    height: 4,
+                    width: 30.w,
+                    color: Colors.orange,
+
+                  ),
+
+                  SizedBox(height: 10,),
+
+
                   Text("Scan QR code to avail ticket",
 
                     style: GoogleFonts.openSans(
@@ -362,9 +395,22 @@ class _Page2State extends State<Page2> {
 
                     ],
                   ),
+
+                  SizedBox(height: 10,),
+
+                  Container(
+                    height: 4,
+                    width: 40.w,
+                    color: Colors.black,
+
+                  ),
                 ],
               ),
-            )
+            ),
+
+
+
+
 
 
 
