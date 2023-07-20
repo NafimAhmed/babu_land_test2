@@ -3,6 +3,7 @@
 
 import 'dart:convert';
 
+import 'package:babu_land_test2/util/underline.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -68,61 +69,192 @@ class _Page2State extends State<Page2> {
 
 
             Container(
+              decoration: BoxDecoration(
+                color: Colors.red.shade100
+              ),
               height: 60.h,
               child: ListView.builder(
                   shrinkWrap: true,
+
+                  physics: ScrollPhysics(),
                   itemCount: apiMap!['items'].length,
                   itemBuilder:(BuildContext context, int index){
 
                     return Container(
-
-                      margin: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(8),
+                      padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Colors.orangeAccent.shade100
+                          color: Colors.orangeAccent.shade100
                       ),
 
-                      child: Column(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+
                         children: [
-                          Text("${apiMap!['items'][index]['dsc']} Ticket",
-                            style: GoogleFonts.poppins(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700
-                            ),
+                          Container(
+                            width: 2,
+                            height: 160,
+                            color: Colors.orange,
                           ),
 
+                          Column(
+                            children: [
 
-                          Text("SL NO : ${apiMap!['items'][index]['pk']}",
-                            style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400
-                            ),
+                              Container(
+                                width: 90.w,
+                                height: 2,
+                                color: Colors.red,
+                              ),
+
+                              Container(
+
+
+                                child: Row(
+
+                                  mainAxisAlignment: MainAxisAlignment.start,
+
+
+
+                                  children: [
+
+                                    Container(
+                                      width:80,
+                                      child: Column(
+                                        //crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Image.asset("assets/Group16.png"),
+                                          SizedBox(height: 10,),
+                                          Text("Uttara"),
+                                         UnderLine(),
+                                          Text("Wari"),
+                                          UnderLine(),
+                                          Text("Badda"),
+                                          UnderLine(),
+                                          Text("Mirpur"),
+                                          UnderLine()
+                                        ],
+                                      ),
+                                    ),
+
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+
+                                    ////////////////////////////////////////////////////////
+
+
+                                    Flex(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      direction: Axis.vertical,
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: List.generate((400/10).floor(), (index) =>Column(
+                                        children: [
+                                          SizedBox(
+                                            width: 1,
+                                            height: 2,
+                                            child: DecoratedBox(
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 1,
+                                            height: 2,
+                                          )
+                                        ],
+                                        //   SizedBox(
+                                        // width: 1,
+                                        // height: 3,
+                                        // child: DecoratedBox(
+                                        //
+                                        //   decoration: BoxDecoration(
+                                        //       color: Colors.white,
+                                        //
+                                        //   ),
+                                        // ),
+
+                                      ),),),
+
+
+                                    SizedBox(
+                                      width: 8.w,
+                                    ),
+
+
+                                    ///////////////////////////////////////////////////////////
+
+
+
+
+
+                                    Column(
+                                      children: [
+                                        Text("${apiMap!['items'][index]['dsc']} Ticket",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700
+                                          ),
+                                        ),
+
+
+                                        Text("SL NO : ${apiMap!['items'][index]['pk']}",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                            color: Colors.grey.shade600
+
+                                          ),
+                                        ),
+
+                                        Text("Quantity : ${apiMap!['items'][index]['qty']}",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                            color: Colors.red
+                                          ),
+                                        ),
+
+
+                                        Text("Price : ${apiMap!['items'][index]['iteminfo_fk']}",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400
+                                          ),
+                                        ),
+
+
+
+
+
+
+
+
+                                      ],
+                                    ),
+                                  ],
+                                ),
+
+                              ),
+
+                              Container(
+                                width: 90.w,
+                                height: 2,
+                                color: Colors.green,
+                              ),
+
+
+                            ],
                           ),
 
-                          Text("Quantity : ${apiMap!['items'][index]['qty']}",
-                            style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400
-                            ),
+                          Container(
+                            width: 2,
+                            height: 160,
+                            color: Colors.blue,
                           ),
-
-
-                          Text("Price : ${apiMap!['items'][index]['iteminfo_fk']}",
-                            style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400
-                            ),
-                          ),
-
-
-
-
-
-
-
 
                         ],
                       ),
-
                     );
 
                   }
@@ -146,6 +278,7 @@ class _Page2State extends State<Page2> {
                     ),
 
                   ),
+                  SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -162,7 +295,13 @@ class _Page2State extends State<Page2> {
 
                           ),
 
-                          Text("${widget.orderID}"),
+                          Text("${widget.orderID}",
+                            
+                            style: GoogleFonts.openSans(
+                              color: Color.fromARGB(255, 255, 140, 26)
+                            ),
+                          
+                          ),
 
                           Text("Ticket Parchase Date: ",
 
@@ -173,7 +312,13 @@ class _Page2State extends State<Page2> {
 
                           ),
 
-                          Text("${widget.parchaseDate}"),
+                          Text("${widget.parchaseDate}",
+                            style: GoogleFonts.openSans(
+                                color: Color.fromARGB(255, 255, 140, 26)
+                            ),
+                          ),
+
+
                           Text("Ticket Expire Date: ",
                             style: GoogleFonts.openSans(
                                 color: Colors.grey.shade600
@@ -181,7 +326,11 @@ class _Page2State extends State<Page2> {
 
                           ),
 
-                          Text("None"),
+                          Text("None",
+                            style: GoogleFonts.openSans(
+                                color: Color.fromARGB(255, 255, 140, 26)
+                            ),
+                          ),
 
                           Text("Ticket Price: ",
                             style: GoogleFonts.openSans(
@@ -190,7 +339,13 @@ class _Page2State extends State<Page2> {
 
                           ),
 
-                          Text("${widget.price}"),
+                          Text("${widget.price}",
+
+                            style: GoogleFonts.openSans(
+                                color: Color.fromARGB(255, 255, 140, 26)
+                            ),
+
+                          ),
 
                         ],
                       ),
