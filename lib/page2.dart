@@ -117,7 +117,23 @@ class _Page2State extends State<Page2> {
                               Container(
                                 width: 90.w,
                                 height: 2,
-                                color: Colors.red,
+                                //color: Colors.red,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 60.w,
+                                      height: 2,
+                                      color: Colors.green,
+
+                                    ),
+                                    Container(
+                                      width: 30.w,
+                                      height: 2,
+                                      color: Colors.red,
+
+                                    )
+                                  ],
+                                ),
                               ),
 
                               Container(
@@ -262,7 +278,23 @@ class _Page2State extends State<Page2> {
                               Container(
                                 width: 90.w,
                                 height: 2,
-                                color: Colors.green,
+                                //color: Colors.green,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 30.w,
+                                      height: 2,
+                                      color: Colors.purple,
+
+                                    ),
+                                    Container(
+                                      width: 60.w,
+                                      height: 2,
+                                      color: Colors.pink,
+
+                                    )
+                                  ],
+                                ),
                               ),
 
 
