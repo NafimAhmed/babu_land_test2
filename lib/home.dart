@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:sizer/sizer.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import 'page2.dart';
 
@@ -48,7 +49,7 @@ class _HomeState extends State<Home> {
 
     getUserData();
     // TODO: implement build
-    return Scaffold(
+    return apiMap!=null?Scaffold(
 
       appBar: AppBar(
         title: Row(
@@ -274,7 +275,16 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-    );
+    ):Scaffold(
+        body: Center(
+          child: LoadingAnimationWidget.staggeredDotsWave(
+            color: Colors.orangeAccent,
+            size: 100,
+          ),
+
+
+          ),
+        );
   }
 
 

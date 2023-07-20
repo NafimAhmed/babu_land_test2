@@ -7,6 +7,7 @@ import 'package:babu_land_test2/util/underline.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:http/http.dart' as http;
@@ -53,7 +54,7 @@ class _Page2State extends State<Page2> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
+    return apiMap!=null? Scaffold(
       appBar: AppBar(
         title: Text("My Tickets",
           style: GoogleFonts.inter(
@@ -417,6 +418,13 @@ class _Page2State extends State<Page2> {
           ],
         ),
       ),
+    ):Scaffold(
+        body: Center(
+          child: LoadingAnimationWidget.staggeredDotsWave(
+            color: Colors.orangeAccent,
+            size: 100,
+          ),
+        )
     );
   }
 
