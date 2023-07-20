@@ -218,6 +218,7 @@ class _HomeState extends State<Home> {
                         SizedBox(height: 25,),
 
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(" Purchase Date  ${apiMap!['items'][index]['sell_date']}",
                               style: GoogleFonts.poppins(
@@ -225,6 +226,34 @@ class _HomeState extends State<Home> {
                                   fontWeight: FontWeight.w400
                               ),
                             ),
+
+                            Row(
+                              children: [
+                                Text("Detail",
+
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 10.5,
+                                    fontWeight: FontWeight.w400,
+                                    color: Color.fromARGB(255, 248, 155, 46),
+                                  ),
+
+                                ),
+
+                                SizedBox(width: 5,),
+                                CircleAvatar(
+                                  backgroundColor: Color.fromARGB(255, 248, 155, 46),
+                                  radius: 9.5,
+                                  child: Icon(
+                                    Icons.arrow_forward_rounded,
+                                    color: Colors.white,
+                                    size: 15,
+                                  ),
+                                )
+                              ],
+                            )
+
+
+
                           ],
                         ),
 
